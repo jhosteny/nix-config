@@ -49,66 +49,6 @@
         "type": "github"
       }
     },
-    "firefly": {
-      "inputs": {
-        "composer2nix-src": "composer2nix-src",
-        "firefly-iii-src": "firefly-iii-src",
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1681668588,
-        "narHash": "sha256-9USKxCCrRav3hiripHSOjxwqPpsUbzamFCKV3RwgP68=",
-        "owner": "timhae",
-        "repo": "firefly",
-        "rev": "f33239546275feddc0d7a616e1e248f6176a3440",
-        "type": "github"
-      },
-      "original": {
-        "owner": "timhae",
-        "repo": "firefly",
-        "type": "github"
-      }
-    },
-    "firefly-bot": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "poetry2nix": "poetry2nix"
-      },
-      "locked": {
-        "lastModified": 1681934803,
-        "narHash": "sha256-4qjxGyAcZFuASPi8ooW76frK3dPV252/PtdzyWCHAvo=",
-        "owner": "misterio77",
-        "repo": "firefly-bot",
-        "rev": "4befee0e15fdc65a9be58a72eb998b57752d3cbd",
-        "type": "github"
-      },
-      "original": {
-        "owner": "misterio77",
-        "repo": "firefly-bot",
-        "type": "github"
-      }
-    },
-    "firefly-iii-src": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1681548383,
-        "narHash": "sha256-ymWotU5wM6nQhsfnyAt+unewJ5D0tJpNK+UedSyfITU=",
-        "owner": "firefly-iii",
-        "repo": "firefly-iii",
-        "rev": "f878af0d3bbfe7b1a51bef758d4e2e9a66118316",
-        "type": "github"
-      },
-      "original": {
-        "owner": "firefly-iii",
-        "ref": "v6.0.8",
-        "repo": "firefly-iii",
-        "type": "github"
-      }
-    },
     "firefox-addons": {
       "inputs": {
         "flake-utils": "flake-utils_2",
@@ -226,29 +166,6 @@
       "original": {
         "owner": "nix-community",
         "repo": "home-manager",
-        "type": "github"
-      }
-    },
-    "hydra": {
-      "inputs": {
-        "nix": "nix",
-        "nixpkgs": [
-          "hydra",
-          "nix",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1679916613,
-        "narHash": "sha256-Nj9U0V7Zv7XoRDdO7ECphTk6jHfOgeZe6G0x4FQLpJ0=",
-        "owner": "nixos",
-        "repo": "hydra",
-        "rev": "082495e34e094cae1eb49dbfc5648938e23c6355",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "repo": "hydra",
         "type": "github"
       }
     },
@@ -651,24 +568,6 @@
         "type": "github"
       }
     },
-    "paste-misterio-me": {
-      "inputs": {
-        "nixpkgs": "nixpkgs_6"
-      },
-      "locked": {
-        "lastModified": 1673484516,
-        "narHash": "sha256-AXtoNp8UFO3vqZKRMIo2IlcFJGvHzgefAqCPWWnRpmg=",
-        "owner": "misterio77",
-        "repo": "paste.misterio.me",
-        "rev": "34d86abaf509c898760ba1da0f00150017565bdd",
-        "type": "github"
-      },
-      "original": {
-        "owner": "misterio77",
-        "repo": "paste.misterio.me",
-        "type": "github"
-      }
-    },
     "poetry2nix": {
       "inputs": {
         "flake-utils": "flake-utils",
@@ -693,12 +592,9 @@
     },
     "root": {
       "inputs": {
-        "firefly": "firefly",
-        "firefly-bot": "firefly-bot",
         "firefox-addons": "firefox-addons",
         "hardware": "hardware",
         "home-manager": "home-manager",
-        "hydra": "hydra",
         "hyprland": "hyprland",
         "hyprwm-contrib": "hyprwm-contrib",
         "impermanence": "impermanence",
@@ -707,10 +603,7 @@
         "nixos-mailserver": "nixos-mailserver",
         "nixpkgs": "nixpkgs_5",
         "nixpkgs-228542": "nixpkgs-228542",
-        "paste-misterio-me": "paste-misterio-me",
-        "sops-nix": "sops-nix",
-        "website": "website",
-        "yrmos": "yrmos"
+        "sops-nix": "sops-nix"
       }
     },
     "sops-nix": {
@@ -762,24 +655,6 @@
         "type": "github"
       }
     },
-    "website": {
-      "inputs": {
-        "nixpkgs": "nixpkgs_8"
-      },
-      "locked": {
-        "lastModified": 1682529315,
-        "narHash": "sha256-A5dNnW1485QJSNznbyymvzv4j6XOAYrDEQLaskMBly8=",
-        "owner": "misterio77",
-        "repo": "website",
-        "rev": "a012b6145b183df2f6ad32e981a281b0f1ebed72",
-        "type": "github"
-      },
-      "original": {
-        "owner": "misterio77",
-        "repo": "website",
-        "type": "github"
-      }
-    },
     "wlroots": {
       "flake": false,
       "locked": {
@@ -820,24 +695,6 @@
       "original": {
         "owner": "hyprwm",
         "repo": "xdg-desktop-portal-hyprland",
-        "type": "github"
-      }
-    },
-    "yrmos": {
-      "inputs": {
-        "nixpkgs": "nixpkgs_9"
-      },
-      "locked": {
-        "lastModified": 1679407424,
-        "narHash": "sha256-pvk2PZd7iwZFPUi2YBa7O6mXWx2vyKh1Hv5ihL2Jaec=",
-        "owner": "misterio77",
-        "repo": "yrmos",
-        "rev": "04d2c6be0e6d6fb8a0bc60ea21f984930b898143",
-        "type": "github"
-      },
-      "original": {
-        "owner": "misterio77",
-        "repo": "yrmos",
         "type": "github"
       }
     }

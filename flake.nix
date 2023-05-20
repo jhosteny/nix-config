@@ -1,15 +1,15 @@
 {
   description = "My NixOS configuration";
 
-  nixConfig = {
-    extra-substituters = [ "https://cache.m7.rs" ];
-    extra-trusted-public-keys = [ "cache.m7.rs:kszZ/NSwE/TjhOcPPQ16IuUiuRSisdiIwhKZCxguaWg=" ];
-  };
+  #nixConfig = {
+  #  extra-substituters = [ "https://cache.m7.rs" ];
+  #  extra-trusted-public-keys = [ "cache.m7.rs:kszZ/NSwE/TjhOcPPQ16IuUiuRSisdiIwhKZCxguaWg=" ];
+  #};
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     # https://github.com/NixOS/nixpkgs/pull/228542
-    nixpkgs-228542.url = "github:misterio77/nixpkgs/add-prometheus-graphite-exporter";
+    #nixpkgs-228542.url = "github:misterio77/nixpkgs/add-prometheus-graphite-exporter";
 
     hardware.url = "github:nixos/nixos-hardware";
     impermanence.url = "github:nix-community/impermanence";
@@ -24,29 +24,29 @@
       url = "gitlab:simple-nixos-mailserver/nixos-mailserver";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-minecraft = {
-      url = "github:misterio77/nix-minecraft/packwiz";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    firefly = {
-      url = "github:timhae/firefly";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    firefly-bot = {
-      url = "github:misterio77/firefly-bot";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    #nix-minecraft = {
+    #  url = "github:misterio77/nix-minecraft/packwiz";
+    #  inputs.nixpkgs.follows = "nixpkgs";
+    #};
+    #firefly = {
+    #  url = "github:timhae/firefly";
+    #  inputs.nixpkgs.follows = "nixpkgs";
+    #};
+    #firefly-bot = {
+    #  url = "github:misterio77/firefly-bot";
+    #  inputs.nixpkgs.follows = "nixpkgs";
+    #};
 
-    hydra.url = "github:nixos/hydra";
+    #hydra.url = "github:nixos/hydra";
     # Using latest commit because it has updated nixpkgs, avoiding glib error
     # Change to release tag when a new one is released.
     hyprland.url = "github:hyprwm/hyprland";
     hyprwm-contrib.url = "github:hyprwm/contrib";
     firefox-addons.url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
 
-    website.url = "github:misterio77/website";
-    paste-misterio-me.url = "github:misterio77/paste.misterio.me";
-    yrmos.url = "github:misterio77/yrmos";
+    #website.url = "github:misterio77/website";
+    #paste-misterio-me.url = "github:misterio77/paste.misterio.me";
+    #yrmos.url = "github:misterio77/yrmos";
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs:
@@ -67,14 +67,14 @@
     {
       nixosModules = import ./modules/nixos;
       homeManagerModules = import ./modules/home-manager;
-      templates = import ./templates;
+      #templates = import ./templates;
 
       overlays = import ./overlays { inherit inputs outputs; };
-      hydraJobs = import ./hydra.nix { inherit inputs outputs; };
+      #hydraJobs = import ./hydra.nix { inherit inputs outputs; };
 
       packages = forEachPkgs (pkgs: (import ./pkgs { inherit pkgs; }) // {
         neovim = let
-          homeCfg = mkHome [ ./home/misterio/generic.nix ] pkgs;
+          homeCfg = mkHome [ ./home/jhosteny/generic.nix ] pkgs;
         in pkgs.writeShellScriptBin "nvim" ''
           ${homeCfg.config.programs.neovim.finalPackage}/bin/nvim \
           -u ${homeCfg.config.xdg.configFile."nvim/init.lua".source} \
@@ -84,35 +84,37 @@
       devShells = forEachPkgs (pkgs: import ./shell.nix { inherit pkgs; });
       formatter = forEachPkgs (pkgs: pkgs.nixpkgs-fmt);
 
-      wallpapers = import ./home/misterio/wallpapers;
+      wallpapers = import ./home/jhosteny/wallpapers;
 
       nixosConfigurations = {
         # Desktops
-        atlas = mkNixos [ ./hosts/atlas ];
-        maia = mkNixos [ ./hosts/maia ];
+        #atlas = mkNixos [ ./hosts/atlas ];
+        #maia = mkNixos [ ./hosts/maia ];
         # Laptops
-        pleione = mkNixos [ ./hosts/pleione ];
-        electra = mkNixos [ ./hosts/electra ];
+        indy = mkNixos [ ./hosts/indy ];
+        #pleione = mkNixos [ ./hosts/pleione ];
+        #electra = mkNixos [ ./hosts/electra ];
         # Servers
-        alcyone = mkNixos [ ./hosts/alcyone ]; # Vultr VM (critical stuff)
-        merope = mkNixos [ ./hosts/merope ]; # Raspberry Pi (media)
-        celaeno = mkNixos [ ./hosts/celaeno ]; # Free Oracle VM (builds)
+        #alcyone = mkNixos [ ./hosts/alcyone ]; # Vultr VM (critical stuff)
+        #merope = mkNixos [ ./hosts/merope ]; # Raspberry Pi (media)
+        #celaeno = mkNixos [ ./hosts/celaeno ]; # Free Oracle VM (builds)
       };
 
       homeConfigurations = {
         # Desktops
-        "misterio@atlas" = mkHome [ ./home/misterio/atlas.nix ] nixpkgs.legacyPackages."x86_64-linux";
-        "misterio@maia" = mkHome [ ./home/misterio/maia.nix ] nixpkgs.legacyPackages."x86_64-linux";
+        #"misterio@atlas" = mkHome [ ./home/misterio/atlas.nix ] nixpkgs.legacyPackages."x86_64-linux";
+        #"misterio@maia" = mkHome [ ./home/misterio/maia.nix ] nixpkgs.legacyPackages."x86_64-linux";
         # Laptops
-        "misterio@pleione" = mkHome [ ./home/misterio/pleione.nix ] nixpkgs.legacyPackages."x86_64-linux";
-        "misterio@electra" = mkHome [ ./home/misterio/electra.nix ] nixpkgs.legacyPackages."x86_64-linux";
+        "jhosteny@indy" = mkHome [ ./home/jhosteny/indy.nix ] nixpkgs.legacyPackages."x86_64-linux";
+        #"misterio@pleione" = mkHome [ ./home/misterio/pleione.nix ] nixpkgs.legacyPackages."x86_64-linux";
+        #"misterio@electra" = mkHome [ ./home/misterio/electra.nix ] nixpkgs.legacyPackages."x86_64-linux";
         # Servers
-        "misterio@alcyone" = mkHome [ ./home/misterio/alcyone.nix ] nixpkgs.legacyPackages."x86_64-linux";
-        "misterio@merope" = mkHome [ ./home/misterio/merope.nix ] nixpkgs.legacyPackages."aarch64-linux";
-        "misterio@celaeno" = mkHome [ ./home/misterio/celaeno.nix ] nixpkgs.legacyPackages."aarch64-linux";
+        #"misterio@alcyone" = mkHome [ ./home/misterio/alcyone.nix ] nixpkgs.legacyPackages."x86_64-linux";
+        #"misterio@merope" = mkHome [ ./home/misterio/merope.nix ] nixpkgs.legacyPackages."aarch64-linux";
+        #"misterio@celaeno" = mkHome [ ./home/misterio/celaeno.nix ] nixpkgs.legacyPackages."aarch64-linux";
 
         # Portable minimum configuration
-        "misterio@generic" = mkHome [ ./home/misterio/generic.nix ] nixpkgs.legacyPackages."x86_64-linux";
+        "jhosteny@generic" = mkHome [ ./home/jhosteny/generic.nix ] nixpkgs.legacyPackages."x86_64-linux";
       };
     };
 }

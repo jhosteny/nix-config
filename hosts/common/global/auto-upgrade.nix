@@ -12,6 +12,6 @@ in
     flags = [
       "--refresh"
     ];
-    flake = "git://m7.rs/nix-config?ref=release-${hostName}";
+    #TODO: flake = "git://m7.rs/nix-config?ref=release-${hostName}";
   };
 }

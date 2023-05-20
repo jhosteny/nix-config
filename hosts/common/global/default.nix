@@ -3,7 +3,7 @@
   imports = [
     inputs.home-manager.nixosModules.home-manager
     ./acme.nix
-    ./auto-upgrade.nix
+  #TODO  ./auto-upgrade.nix
     ./fish.nix
     ./locale.nix
     ./nix.nix
@@ -29,7 +29,7 @@
   environment.enableAllTerminfo = true;
 
   hardware.enableRedistributableFirmware = true;
-  networking.domain = "m7.rs";
+  networking.domain = "robot.dev";
 
   # Increase open file limit for sudoers
   security.pam.loginLimits = [

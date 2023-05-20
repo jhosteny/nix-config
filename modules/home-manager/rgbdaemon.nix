@@ -118,7 +118,7 @@ in {
       '';
     };
     systemd.user.services.rgbdaemon = {
-      Unit = { Description = "Misterio RGB Daemon"; };
+      Unit = { Description = "RGB Daemon"; };
       Service = {
         ExecStart = "${cfg.package}/bin/rgbdaemon";
         ExecReload = "${pkgs.coreutils}/bin/kill -HUP $MAINPID";
