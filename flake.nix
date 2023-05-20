@@ -15,6 +15,7 @@
     impermanence.url = "github:nix-community/impermanence";
     nix-colors.url = "github:misterio77/nix-colors";
     sops-nix.url = "github:mic92/sops-nix";
+    ssh-to-age.url = "github:Mic92/ssh-to-age";
 
     home-manager = {
       url = "github:nix-community/home-manager";

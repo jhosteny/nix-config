@@ -4,8 +4,7 @@ keys:
     - &jhosteny FF0ADCFBE96ECEFCE6E766817E8972E53784A729
   # Hosts
   - &hosts:
-    - &indy age1hm5lf4qk84r4wh00atn6hpts7mpdx80adq26wht2e5qh9ewvhyaszfv82d
-
+    - &indy: age1em0d4ntgaukn8x2008ht9kkg00fql7fehsgmq5fq9jypxaxmcqfqmstqtz
 creation_rules:
   - path_regex: hosts/common/secrets.ya?ml$
     key_groups:

@@ -38,7 +38,7 @@ in
   home = {
     username = lib.mkDefault "jhosteny";
     homeDirectory = lib.mkDefault "/home/${config.home.username}";
-    stateVersion = lib.mkDefault "22.05";
+    stateVersion = lib.mkDefault "22.11";
     sessionPath = [ "$HOME/.local/bin" ];
 
     persistence = {
