@@ -1,11 +1,9 @@
 {
-  imports = [
-    ../common/optional/ephemeral-btrfs.nix
-  ];
+  imports = [ ];
 
   boot = {
     initrd = {
-      availableKernelModules = [ "nvme" "xhci_pci" "ahci" "rtsx_usb_sdmmc" "usbhid" ];
+      availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
       kernelModules = [ "kvm-intel" ];
     };
     loader = {
@@ -14,22 +12,37 @@
         consoleMode = "max";
       };
       efi.canTouchEfiVariables = true;
+      efi.efiSysMountPoint = "/boot/efi";
     };
+    kernelParams = [
+      "i915.enable_psr=0" "log_level=3"
+    ];
+    extraModprobeConfig = ''
+      options i915 force_probe=46a6
+    '';
   };
 
-  fileSystems = {
-    "/boot" = {
-      device = "/dev/disk/by-label/ESP";
+  fileSystems."/" =
+    { device = "/dev/disk/by-uuid/ebb715d4-5d26-4472-869d-4d8b39933c0c";
+      fsType = "ext4";
+    };
+
+  fileSystems."/boot/efi" =
+    { device = "/dev/disk/by-uuid/9154-4E1F";
       fsType = "vfat";
     };
-  };
 
-  swapDevices = [{
-    device = "/swap/swapfile";
-    size = 8196;
-  }];
+  swapDevices =
+    [ { device = "/dev/disk/by-uuid/6438f83d-4866-458a-8564-440ae733d26f"; }
+    ];
 
-  nixpkgs.hostPlatform.system = "x86_64-linux";
-  hardware.cpu.intel.updateMicrocode = true;
-  powerManagement.cpuFreqGovernor = "powersave";
+  # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
+  # (the default) this is the recommended approach. When using systemd-networkd it's
+  # still possible to use this option, but it's recommended to use it in conjunction
+  # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
+  networking.useDHCP = lib.mkDefault true;
+
+  nixpkgs.hostPlatform.system = lib.mkDefault "x86_64-linux";
+  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

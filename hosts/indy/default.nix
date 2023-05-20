@@ -1,14 +1,14 @@
 { pkgs, inputs, ... }: {
   imports = [
     inputs.hardware.nixosModules.common-cpu-intel
-    # inputs.hardware.nixosModules.common-gpu-nvidia
+    inputs.hardware.nixosModules.common-gpu-nvidia
     inputs.hardware.nixosModules.common-gpu-intel
     inputs.hardware.nixosModules.common-pc-ssd
 
     ./hardware-configuration.nix
 
     ../common/global
-    ../common/users/misterio
+    ../common/users/jhosteny
 
     ../common/optional/wireless.nix
     ../common/optional/greetd.nix
@@ -16,7 +16,7 @@
   ];
 
   networking = {
-    hostName = "electra";
+    hostName = "indy";
   };
 
   boot = {
@@ -48,16 +48,17 @@
     enable = true;
     wlr.enable = true;
   };
+
   hardware = {
-    /*
-      nvidia = {
+    nvidia = {
+      #package = config.boot.kernelPackages.nvidiaPackages.stable;
+      modesetting.enable = true; # ?? Needed anymore?
       prime = {
         offload.enable = true;
         nvidiaBusId = "PCI:1:0:0";
         intelBusId = "PCI:0:2:0";
       };
-      };
-    */
+    };
     opengl = {
       enable = true;
       driSupport = true;
@@ -65,5 +66,5 @@
     };
   };
 
-  system.stateVersion = "22.05";
+  system.stateVersion = "22.11";
 }
