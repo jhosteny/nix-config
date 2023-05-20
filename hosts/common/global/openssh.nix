@@ -34,9 +34,6 @@ in
     knownHosts = builtins.mapAttrs
       (name: _: {
         publicKeyFile = pubKey name;
-        extraHostNames =
-          (lib.optional (name == hostName) "localhost") ++ # Alias for localhost if it's the same host
-          #(lib.optionals (name == gitHost) [ "m7.rs" "git.m7.rs" ]); # Alias for m7.rs and git.m7.rs if it's the git host
       })
       hosts;
   };
