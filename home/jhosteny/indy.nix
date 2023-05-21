@@ -3,7 +3,6 @@
   imports = [
     ./global
     ./features/desktop/wireless
-    ./features/desktop/hyprland
     ./features/productivity
     ./features/pass
   ];
