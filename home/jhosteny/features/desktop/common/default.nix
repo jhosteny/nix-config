@@ -4,7 +4,7 @@
     ./deluge.nix
     ./discord.nix
     ./dragon.nix
-    ./firefox.nix
+#    ./firefox.nix
     ./font.nix
     ./gtk.nix
     ./pavucontrol.nix
