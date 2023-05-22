@@ -61,7 +61,7 @@ in
   }
 
   input {
-    kb_layout=br,us
+    kb_layout=us
     touchpad {
       disable_while_typing=false
     }
