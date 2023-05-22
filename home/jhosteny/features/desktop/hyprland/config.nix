@@ -1,6 +1,6 @@
 { home, colorscheme, wallpaper }:
 let
-  inherit (home.sessionVariables) TERMINAL BROWSER EDITOR;
+  inherit (home.sessionVariables) TERMINAL EDITOR;
 in
 ''
   general {
@@ -88,7 +88,6 @@ in
   bind=SUPER,Return,exec,${TERMINAL}
   bind=SUPER,w,exec,makoctl dismiss
   bind=SUPER,v,exec,${TERMINAL} $SHELL -ic ${EDITOR}
-  bind=SUPER,b,exec,${BROWSER}
 
   bind=SUPER,x,exec,wofi -S drun -x 10 -y 10 -W 25% -H 60%
   bind=SUPER,d,exec,wofi -S run
