@@ -11,8 +11,8 @@
     # Declarative
     environmentFile = config.sops.secrets.wireless.path;
     networks = {
-      "rowdy" = {
-        psk = "@ROWDY@";
+      "@home_eero_ssid@" = {
+        psk = "@home_eero_psk@";
       };
     };
 
